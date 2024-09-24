@@ -17,7 +17,8 @@ def read_requirements(path):
 
 
 setuptools.setup(
-    name="inference-development",
+    name="inference-gpu",
+    version="0.20.1",
     author="Roboflow",
     author_email="help@roboflow.com",
     description="With no prior knowledge of machine learning or device-specific deployment, you can deploy a computer vision model to a range of devices and environments using Roboflow Inference.",
@@ -44,23 +45,23 @@ setuptools.setup(
     install_requires=read_requirements(
         [
             "requirements/_requirements.txt",
-            "requirements/requirements.cpu.txt",
+            "requirements/requirements.gpu.txt",
             "requirements/requirements.cli.txt",
-            "requirements/requirements.clip.txt",
-            "requirements/requirements.http.txt",
             "requirements/requirements.sdk.http.txt",
-            "requirements/requirements.gaze.txt",
-            "requirements/requirements.groundingdino.txt",
-            "requirements/requirements.hosted.txt",
-            "requirements/requirements.waf.txt",
-            "requirements/requirements.yolo_world.txt",
-            "requirements/requirements.code_analysis.txt",
-            "requirements/requirements.test.unit.txt",
-            "requirements/requirements.test.integration.txt",
         ]
     ),
     extras_require={
+        "clip": read_requirements("requirements/requirements.clip.txt"),
+        "gaze": read_requirements("requirements/requirements.gaze.txt"),
+        "grounding-dino": read_requirements(
+            "requirements/requirements.groundingdino.txt"
+        ),
+        "hosted": read_requirements("requirements/requirements.hosted.txt"),
+        "http": read_requirements("requirements/requirements.http.txt"),
         "sam": read_requirements("requirements/requirements.sam.txt"),
+        "waf": read_requirements("requirements/requirements.waf.txt"),
+        "yolo-world": read_requirements("requirements/requirements.yolo_world.txt"),
+        "transformers": read_requirements("requirements/requirements.transformers.txt"),
     },
     classifiers=[
         "Programming Language :: Python :: 3",
